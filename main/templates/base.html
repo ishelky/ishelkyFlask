@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'components/head.html' %}
+    <title>{% block title -%}{%- endblock %}</title>
+</head>
+{% set url_array = request.url.split('/')[3:] %}
+<body class="
+        {% for i in url_array %}{{ i }}{% endfor %} {% if url_array|length > 1 %} not_front {% else %} front {% endif %}">
+{% include 'components/menu.html' %}
+<div class="">
+    {% block block_present %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block block_verstka %}{% endblock %}
+</div>
+{% include 'components/map.html' %}
+
+{% include 'components/footer.html' %}
+{% include 'components/popupmail.html' %}
+</body>
+<script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="/static/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="/static/js/slick.min.js"></script>
+<script type="text/javascript" src="/static/js/wow.min.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>
+
+
+</html>

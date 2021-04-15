@@ -1,0 +1,130 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Light'), local('OpenSans-Light'), url('/static/fonts/opensans/opensanslight.woff2') format('woff2'), url('/static/fonts/opensans/opensanslight.woff') format('woff'), url('/static/fonts/opensans/opensanslight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url('/static/fonts/opensans/opensanslightitalic.woff2') format('woff2'), url('/static/fonts/opensans/opensanslightitalic.woff') format('woff'), url('/static/fonts/opensans/opensanslightitalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'), local('OpenSans'), url('/static/fonts/opensans/opensans.woff2') format('woff2'), url('/static/fonts/opensans/opensans.woff') format('woff'), url('/static/fonts/opensans/opensans.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url('/static/fonts/opensans/opensansitalic.woff2') format('woff2'), url('/static/fonts/opensans/opensansitalic.woff') format('woff'), url('/static/fonts/opensans/opensansitalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url('/static/fonts/opensans/opensanssemibold.woff2') format('woff2'), url('/static/fonts/opensans/opensanssemibold.woff') format('woff'), url('/static/fonts/opensans/opensanssemibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url('/static/fonts/opensans/opensanssemibolditalic.woff2') format('woff2'), url('/static/fonts/opensans/opensanssemibolditalic.woff') format('woff'), url('/static/fonts/opensans/opensanssemibolditalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('/static/fonts/opensans/opensansbold.woff2') format('woff2'), url('/static/fonts/opensans/opensansbold.woff') format('woff'), url('/static/fonts/opensans/opensansbold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url('/static/fonts/opensans/opensansbolditalic.woff2') format('woff2'), url('/static/fonts/opensans/opensansbolditalic.woff') format('woff'), url('/static/fonts/opensans/opensansbolditalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url('/static/fonts/opensans/opensansextrabold.woff2') format('woff2'), url('/static/fonts/opensans/opensansextrabold.woff') format('woff'), url('/static/fonts/opensans/opensansextrabold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url('/static/fonts/opensans/opensansextrabolditalic.woff2') format('woff2'), url('/static/fonts/opensans/opensansextrabolditalic.woff') format('woff'), url('/static/fonts/opensans/opensansextrabolditalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+a.active.focus,
+a.active:focus,
+a.focus,
+a:active.focus,
+a:active:focus,
+a:focus,
+button.active.focus,
+button.active:focus,
+button.focus,
+button:active.focus,
+button:active:focus,
+button:focus,
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+  outline: 0 !important;
+  outline-color: transparent !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+}
+
+.form-control:focus {
+  background: transparent;
+}
+
+body {
+  font-family: "Open Sans";
+  font-size: 14px;
+  color: rgba(18, 35, 61, 255);
+}
+
+a {
+  display: inline-block;
+  border-bottom: 1px solid;
+  text-decoration: none;
+  @include transition(1s);
+
+  &:hover {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+}
+
+.container-fluid {
+  max-width: 1578px;
+}
+
+
+

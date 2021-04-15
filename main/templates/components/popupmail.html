@@ -1,0 +1,38 @@
+<div class="modal fade" id="popup_mail" tabindex="-1" role="dialog" aria-labelledby="popup_mail" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content popup_mail_block">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Оставте нам сообщение</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form_popup_mail">
+                    <div class="form-group">
+                        <label for="InputContact_popup_mail">Email или телефон*</label>
+                        <input type="text" class="form-control" id="InputContact_popup_mail" placeholder="8 929 362 17 75">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputName_popup_mail">Имя*</label>
+                        <input type="text" class="form-control" id="InputName_popup_mail" placeholder="Имя">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputMessage_popup_mail">Текст сообщения</label>
+                        <textarea class="form-control" id="InputMessage_popup_mail" rows="3"  placeholder=". . ."></textarea>
+                    </div>
+                    <div class="form-group" id="grata" data-num="{{ range(1, 51) | random }}">
+
+                    </div>
+                    <div class="form-group  text-danger" id="error_popup_mail">
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="send_popup_mail">Отправить</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

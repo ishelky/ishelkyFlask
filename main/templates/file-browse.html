@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .item {
+            float: left;
+            width: 130px;
+            height: 106px;
+            margin: 5px;
+            cursor: pointer;
+            background: no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        .item:hover {
+            box-shadow: 0 0 5px 0 red;
+        }
+
+        .item_folder {
+            float: left;
+            width: 130px;
+            height: 104px;
+            margin: 5px;
+            cursor: pointer;
+            background: no-repeat center;
+            background-size: 100% 100%;
+            color: #1b1e21;
+            text-decoration: none;
+        }
+
+        body {
+            display: block;
+            height: 100%;
+            overflow: hidden;
+            background: #dfedf3;
+        }
+
+        .css-folder {
+            width: 8em;
+            height: 8em;
+        }
+
+        .top {
+            height: 5%;
+            margin: 0 0.2em;
+            position: relative;
+        }
+
+        .top-left {
+            width: 44%;
+            height: 100%;
+            border-top: 0.3em solid #073642;
+            border-left: 0.3em solid #073642;
+            border-right: 0.3em solid #073642;
+            position: absolute;
+            background-color: #eee8d5;
+        }
+
+        .top-right {
+            position: absolute;
+            width: 51%;
+            height: 100%;
+            border-bottom: 0.3em solid #073642;
+            right: 0;
+        }
+
+        .top-back {
+            border-bottom: 0.3em solid #073642;
+        }
+
+        .bottom, .bottom-back {
+            margin-top: -5em;
+            background-color: #eee8d5;
+            height: 65%;
+            border-top: 0.3em solid #073642;
+            border-bottom: 0.3em solid #073642;
+            border-left: 0.3em solid #073642;
+            border-right: 0.3em solid #073642;
+        }
+
+        .bottom-back {
+            border-top: none;
+            margin: 0 0.2em;
+            background-color: #eee8d5;
+
+
+        }
+
+        .bottom span {
+            padding: 2px;
+        }
+
+        .bottom {
+            text-align: center;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .bk-btn {
+            height: 110px;
+            width: 110px;
+            background-color: #a22020;
+        }
+
+        .bk-btn .bk-btn-triangle {
+            position: relative;
+            top: 27.5px;
+            left: 22px;
+            width: 0;
+            height: 0;
+            border-top: 27.5px solid transparent;
+            border-bottom: 27.5px solid transparent;
+            border-right: 27.5px solid white;
+        }
+
+        .bk-btn .bk-btn-bar {
+            position: relative;
+            background-color: white;
+            height: 16.5px;
+            width: 27.5px;
+            top: -7.7px;
+            left: 48.4px;
+        }
+
+    </style>
+</head>
+<body>
+{% if back_page %}
+<a class="item_folder"
+   {% if back_page=="NONE" %}
+   href="{{ url_for('check_file_handler',CKEditor='content',CKEditorFuncNum='1',langCode='ru' ) }}">
+    {% else %}
+    href="{{ url_for('check_file_handler', dir=back_page,CKEditor='content',CKEditorFuncNum='1',langCode='ru' ) }}">
+    {% endif %}
+    <div class="bk-btn">
+        <div class="bk-btn-triangle"></div>
+        <div class="bk-btn-bar"></div>
+    </div>
+</a>
+{% endif %}
+
+{% for item in folder %}
+<a class="item_folder"
+   href="{{ url_for('check_file_handler', dir=item.path,CKEditor='content',CKEditorFuncNum='1',langCode='ru' ) }}"
+   data-filename="{{item}}">
+    <div class="css-folder">
+        <div class="top">
+            <div class="top-left"></div>
+            <div class="top-right"></div>
+        </div>
+        <div class="bottom-back"></div>
+        <div class="bottom"><span>{{item.name}}</span></div>
+    </div>
+</a>
+
+{% endfor %}
+
+{% for item in files %}
+
+<div class="item"
+     data-url="{{ url_for('uploads', filename=item,) }}"
+     style="background-image: url('{{ url_for('uploads', filename=item) }}') "></div>
+
+{% endfor %}
+
+<script>
+    function getUrlParam(paramName) {
+        var reParam = new RegExp('(?:[\?&]|&)' + paramName + '=([^&]+)', 'i');
+        var match = window.location.search.match(reParam);
+
+        return (match && match.length > 1) ? match[1] : null;
+    }
+
+    document.addEventListener('click', function (event) {
+        var element = event.target;
+        if (element.classList.contains('item') && window.opener) {
+            var funcNum = getUrlParam('CKEditorFuncNum');
+            var fileUrl = element.getAttribute('data-url');
+            console.log(fileUrl)
+            window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
+            window.close();
+        }
+    });
+</script>
+</body>
+</html>

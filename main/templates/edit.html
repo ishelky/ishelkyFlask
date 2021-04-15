@@ -1,0 +1,12 @@
+{% extends 'admin/model/edit.html' %}
+{% block tail %}
+    {{ super() }}
+    {{ ckeditor.load() }}
+    {{ ckeditor.config() }}
+   <script>
+    CKEDITOR.plugins.addExternal( 'filebrowser', '/static/ckeditor/filebrowser/', 'plugin.js' );
+    CKEDITOR.config.extraPlugins = 'filebrowser';
+    CKEDITOR.config.filebrowserBrowseUrl  = '/check-file';
+    CKEDITOR.config.filebrowserImageUploadUrl  = '/upload';
+    </script>
+{% endblock %}
